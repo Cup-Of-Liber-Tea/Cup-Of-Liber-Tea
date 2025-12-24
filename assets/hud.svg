@@ -1,0 +1,105 @@
+
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap');
+    
+    .text { font-family: 'Share Tech Mono', monospace; fill: #00f3ff; }
+    .alert { fill: #ff003c; }
+    .warn { fill: #fcee0a; }
+    
+    /* 애니메이션 정의 */
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes scan {
+      0% { transform: translateX(-50px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(850px); opacity: 0; }
+    }
+    
+    @keyframes pulse {
+      0% { r: 5; opacity: 0.5; }
+      100% { r: 15; opacity: 0; }
+    }
+
+    .spinner { transform-origin: 100px 150px; animation: rotate 10s linear infinite; }
+    .blinker { animation: blink 1s infinite; }
+    .scanner { animation: scan 3s linear infinite; }
+    .pulser { animation: pulse 2s infinite; }
+    
+  </style>
+
+  <!-- 배경 -->
+  <rect x="0" y="0" width="800" height="300" fill="#0a0a0a" rx="15" />
+  
+  <!-- 배경 그리드 -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00f3ff" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="300" fill="url(#grid)" />
+
+  <!-- 왼쪽: 회전하는 리액터 코어 -->
+  <g class="spinner">
+    <circle cx="100" cy="150" r="60" stroke="#00f3ff" stroke-width="2" fill="none" stroke-dasharray="10 5" opacity="0.7" />
+    <circle cx="100" cy="150" r="45" stroke="#fcee0a" stroke-width="1" fill="none" stroke-dasharray="5 5" opacity="0.5" />
+    <circle cx="100" cy="150" r="30" stroke="#ff003c" stroke-width="2" fill="none" opacity="0.8" />
+  </g>
+  <text x="100" y="155" text-anchor="middle" class="text" font-size="12">CORE</text>
+
+  <!-- 중앙: 시스템 정보 -->
+  <g transform="translate(200, 50)">
+    <text x="0" y="0" class="text" font-size="24" font-weight="bold">SYSTEM ONLINE</text>
+    <rect x="220" y="-15" width="10" height="10" fill="#00f3ff" class="blinker" />
+    
+    <text x="0" y="40" class="text" font-size="16">TARGET: CUP-OF-LIBER-TEA</text>
+    <text x="0" y="70" class="text" font-size="16">ACCESS: GRANTED (Lv.99)</text>
+    
+    <!-- 실시간(빌드타임) 데이터 -->
+    <text x="0" y="110" class="text" font-size="14">SERVER TIME: 06:23:29 KST</text>
+    <text x="0" y="130" class="text" font-size="14">DATE: 2025-12-25</text>
+    
+    <!-- 가짜 로딩 바 -->
+    <text x="0" y="170" class="text" font-size="14">SYNC RATE</text>
+    <rect x="100" y="160" width="200" height="10" stroke="#00f3ff" fill="none" />
+    <rect x="102" y="162" width="166" height="6" fill="#00f3ff" opacity="0.8">
+      <animate attributeName="width" values="150;190;160;180" dur="2s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- 오른쪽: 상태 게이지 -->
+  <g transform="translate(550, 50)">
+    <text x="0" y="0" class="text" font-size="14">CORE TEMP</text>
+    <rect x="0" y="10" width="150" height="5" fill="#333" />
+    <rect x="0" y="10" width="81.0" height="5" fill="#ff003c" />
+    <text x="160" y="15" class="text" font-size="12">54°C</text>
+    
+    <text x="0" y="40" class="text" font-size="14">CPU LOAD</text>
+    <rect x="0" y="50" width="150" height="5" fill="#333" />
+    <rect x="0" y="50" width="37.5" height="5" fill="#fcee0a" />
+    <text x="160" y="55" class="text" font-size="12">25%</text>
+    
+    <!-- 스캔 효과 -->
+    <rect x="0" y="100" width="200" height="100" fill="none" stroke="#00f3ff" stroke-width="1" opacity="0.5"/>
+    <text x="10" y="120" class="text" font-size="10" opacity="0.7">
+      Analyzing commit history...
+      Optimizing neural net...
+      Brewing coffee...
+    </text>
+  </g>
+  
+  <!-- 스캐너 라인 (화면 전체를 훑음) -->
+  <rect class="scanner" x="0" y="0" width="20" height="300" fill="url(#grid)" opacity="0.3" />
+  <rect class="scanner" x="0" y="0" width="2" height="300" fill="#00f3ff" opacity="0.8" style="filter: drop-shadow(0 0 5px #00f3ff);" />
+
+</svg>
+    

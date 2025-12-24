@@ -1,0 +1,92 @@
+name: Update README & Snake
+
+on:
+  push:
+    paths:
+      - 'components/**'
+      - 'scripts/**'
+      - '.github/workflows/update-readme.yml'
+  schedule:
+    - cron: '*/40 * * * *' 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Generate Snake Animation
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: Push Snake to Output Branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check Website Status (Bash)
+        env:
+          WEBSITE_URL1: ${{ secrets.WEBSITE_URL1 }}
+          WEBSITE_URL2: ${{ secrets.WEBSITE_URL2 }}
+          WEBSITE_URL3: ${{ secrets.WEBSITE_URL3 }}
+        run: |
+          echo '<div align="center"><h3>🌍 Service Status</h3>' > components/web_status.md
+          
+          check_url() {
+            url=$1
+            if [ -z "$url" ]; then return; fi
+            
+            echo "Checking $url..."
+            code=$(curl -s -o /dev/null -I -w "%{http_code}" -L --max-time 10 "$url" || echo "000")
+            
+            if [[ "$code" =~ ^[23] ]]; then
+              color="success"
+              status="Online"
+            else
+              color="critical"
+              status="Issue"
+            fi
+            
+            echo "<img src=\"https://img.shields.io/badge/-${status}-${color}?style=for-the-badge&logo=googlechrome&logoColor=white\" alt=\"Web Status\" />" >> components/web_status.md
+          }
+
+          check_url "$WEBSITE_URL1"
+          check_url "$WEBSITE_URL2"
+          check_url "$WEBSITE_URL3"
+          
+          echo '<br/><sub>Last Check: '$(date -u +"%Y-%m-%d %H:%M")' (UTC)</sub></div><br/>' >> components/web_status.md
+          
+          cat components/web_status.md
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Generate Visual Assets
+        run: |
+          python scripts/generate_hud.py
+          python scripts/generate_visuals.py
+
+      - name: Build README
+        run: python scripts/build_readme.py
+
+      - name: Commit and push README
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add readme.md assets/*.svg components/web_status.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Visuals" && git push)

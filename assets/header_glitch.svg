@@ -1,0 +1,51 @@
+
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&amp;display=swap');
+    
+    .bg { fill: #0a0a0a; }
+    .text { 
+      font-family: 'Black Ops One', cursive; 
+      font-size: 60px; 
+      fill: #ffffff;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    
+    /* Glitch Animation */
+    @keyframes glitch-anim {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    
+    @keyframes glitch-color {
+      0% { fill: #ffffff; }
+      33% { fill: #00f3ff; }
+      66% { fill: #ff00ff; }
+      100% { fill: #ffffff; }
+    }
+    
+    .glitch-layer { mix-blend-mode: exclusion; }
+    .g1 { animation: glitch-anim 2s infinite linear alternate-reverse; fill: #00f3ff; opacity: 0.8; }
+    .g2 { animation: glitch-anim 3s infinite linear alternate-reverse; fill: #ff00ff; opacity: 0.8; }
+    .main-text { animation: glitch-color 5s infinite; }
+    
+  </style>
+  
+  <rect width="800" height="200" class="bg" />
+  
+  <!-- Glitch Layers -->
+  <text x="400" y="100" class="text g1 glitch-layer" dx="-5" dy="0">CUP-OF-LIBER-TEA</text>
+  <text x="400" y="100" class="text g2 glitch-layer" dx="5" dy="0">CUP-OF-LIBER-TEA</text>
+  <text x="400" y="100" class="text main-text">CUP-OF-LIBER-TEA</text>
+  
+  <!-- Deco Lines -->
+  <path d="M 100 130 L 700 130" stroke="#00f3ff" stroke-width="2" opacity="0.5" />
+  <path d="M 100 70 L 700 70" stroke="#ff00ff" stroke-width="2" opacity="0.5" />
+
+</svg>
+    

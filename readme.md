@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8e2de2,100:4a00e0&height=250&section=header&text=GAME%20START&fontSize=70&fontAlign=50&fontAlignY=40&desc=Insert%20Coin%20(Press%20Star)&descAlignY=65&descSize=25&animation=fadeIn&fontColor=fff" width="100%" />
+  <img src="assets/header_glitch.svg" width="100%" alt="Cyberpunk Header" />
 </div>
 <br/>
 
@@ -11,9 +11,15 @@
 <br/><br/>
 
 
+<div align="center">
+  <img src="assets/skills_holo.svg" width="100%" alt="Holo Skills" />
+</div>
+<br/><br/>
+
+
 
 <div align="center">
-  <h3>⏰ 06:23 (KST) - 🌅 Good Morning! 커피부터 마시자.</h3>
+  <h3>⏰ 06:48 (KST) - 🌅 Good Morning! 커피부터 마시자.</h3>
 </div>
 <br/>
 
@@ -21,7 +27,7 @@
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
-<br/><sub>Last Check: 2025-12-24 21:23 (UTC)</sub></div><br/>
+<br/><sub>Last Check: 2025-12-24 21:48 (UTC)</sub></div><br/>
 
 <div align="center">
   <h3>🐍 Contribution Snake (Eating my commits)</h3>

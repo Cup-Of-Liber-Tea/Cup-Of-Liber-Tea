@@ -19,7 +19,7 @@
 
 
 <div align="center">
-  <h3>⏰ 02:10 (KST) - 🧟‍♂️ 새벽 3시 넘었다. 제발 좀 자라...</h3>
+  <h3>⏰ 03:06 (KST) - 🧟‍♂️ 새벽 3시 넘었다. 제발 좀 자라...</h3>
 </div>
 <br/>
 
@@ -27,7 +27,7 @@
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
 <img src="https://img.shields.io/badge/-Issue-critical?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Status" />
-<br/><sub>Last Check: 2026-05-06 17:10 (UTC)</sub></div><br/>
+<br/><sub>Last Check: 2026-05-06 18:06 (UTC)</sub></div><br/>
 
 <div align="center">
   <h3>🐍 Contribution Snake (Eating my commits)</h3>

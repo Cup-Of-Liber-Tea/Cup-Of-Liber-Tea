@@ -10,28 +10,28 @@
   
         <g transform="translate(300, 100)" class="hex-container">
             <path d="M 30 0 L 60 17 L 60 52 L 30 70 L 0 52 L 0 17 Z" fill="#111" stroke="#00f3ff" stroke-width="2" opacity="0.8">
-                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="4s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
             </path>
             <image href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" x="15" y="15" height="40" width="40" />
         </g>
         
         <g transform="translate(380, 60)" class="hex-container">
             <path d="M 30 0 L 60 17 L 60 52 L 30 70 L 0 52 L 0 17 Z" fill="#111" stroke="#00f3ff" stroke-width="2" opacity="0.8">
-                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="4s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
             </path>
             <image href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" x="15" y="15" height="40" width="40" />
         </g>
         
         <g transform="translate(380, 140)" class="hex-container">
             <path d="M 30 0 L 60 17 L 60 52 L 30 70 L 0 52 L 0 17 Z" fill="#111" stroke="#00f3ff" stroke-width="2" opacity="0.8">
-                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="4s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
             </path>
             <image href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" x="15" y="15" height="40" width="40" />
         </g>
         
         <g transform="translate(460, 100)" class="hex-container">
             <path d="M 30 0 L 60 17 L 60 52 L 30 70 L 0 52 L 0 17 Z" fill="#111" stroke="#00f3ff" stroke-width="2" opacity="0.8">
-                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
             </path>
             <image href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" x="15" y="15" height="40" width="40" />
         </g>

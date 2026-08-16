@@ -65,13 +65,13 @@
     <text x="0" y="70" class="text" font-size="16">ACCESS: GRANTED (Lv.99)</text>
     
     <!-- 실시간(빌드타임) 데이터 -->
-    <text x="0" y="110" class="text" font-size="14">SERVER TIME: 08:52:08 KST</text>
+    <text x="0" y="110" class="text" font-size="14">SERVER TIME: 10:00:34 KST</text>
     <text x="0" y="130" class="text" font-size="14">DATE: 2026-08-16</text>
     
     <!-- 가짜 로딩 바 -->
     <text x="0" y="170" class="text" font-size="14">SYNC RATE</text>
     <rect x="100" y="160" width="200" height="10" stroke="#00f3ff" fill="none" />
-    <rect x="102" y="162" width="156" height="6" fill="#00f3ff" opacity="0.8">
+    <rect x="102" y="162" width="172" height="6" fill="#00f3ff" opacity="0.8">
       <animate attributeName="width" values="150;190;160;180" dur="2s" repeatCount="indefinite" />
     </rect>
   </g>
@@ -80,13 +80,13 @@
   <g transform="translate(550, 50)">
     <text x="0" y="0" class="text" font-size="14">CORE TEMP</text>
     <rect x="0" y="10" width="150" height="5" fill="#333" />
-    <rect x="0" y="10" width="72.0" height="5" fill="#ff003c" />
-    <text x="160" y="15" class="text" font-size="12">48°C</text>
+    <rect x="0" y="10" width="69.0" height="5" fill="#ff003c" />
+    <text x="160" y="15" class="text" font-size="12">46°C</text>
     
     <text x="0" y="40" class="text" font-size="14">CPU LOAD</text>
     <rect x="0" y="50" width="150" height="5" fill="#333" />
-    <rect x="0" y="50" width="37.5" height="5" fill="#fcee0a" />
-    <text x="160" y="55" class="text" font-size="12">25%</text>
+    <rect x="0" y="50" width="15.0" height="5" fill="#fcee0a" />
+    <text x="160" y="55" class="text" font-size="12">10%</text>
     
     <!-- 스캔 효과 -->
     <rect x="0" y="100" width="200" height="100" fill="none" stroke="#00f3ff" stroke-width="1" opacity="0.5"/>

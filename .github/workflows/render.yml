@@ -1,0 +1,73 @@
+name: render
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["src/**", ".github/workflows/render.yml"]
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'sign')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - run: pip install --disable-pip-version-check -q "fonttools[woff]>=4.50"
+
+      - name: restore previous render
+        run: |
+          mkdir -p dist
+          if git fetch -q --depth=1 origin output; then
+            git archive FETCH_HEAD | tar -x -C dist
+          fi
+
+      - name: render
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || github.token }}
+          ISSUE_TOKEN: ${{ github.token }}
+          STATUS_TARGETS: ${{ secrets.STATUS_TARGETS }}
+          WEBSITE_URL1: ${{ secrets.WEBSITE_URL1 }}
+          WEBSITE_URL2: ${{ secrets.WEBSITE_URL2 }}
+          WEBSITE_URL3: ${{ secrets.WEBSITE_URL3 }}
+          GUESTBOOK_BLOCK: ${{ vars.GUESTBOOK_BLOCK }}
+        run: python -m src.main --out dist
+
+      - name: publish to output branch
+        working-directory: dist
+        env:
+          PUSH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN: ${{ github.run_number }}
+        run: |
+          git init -q -b output
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "render #$RUN"
+          git push -qf "https://x-access-token:${PUSH_TOKEN}@github.com/${REPO}.git" output
+
+      - name: keep schedule alive
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: gh api -X PUT "repos/${REPO}/actions/workflows/render.yml/enable"
